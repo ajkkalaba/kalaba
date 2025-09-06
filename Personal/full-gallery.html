@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ajk Kalaba | Full Gallery</title>
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    /* --- General Styles --- */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #141414;
+      color: #f0f0f0;
+      text-align: center;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+    body.fade-in { opacity: 1; }
+
+    :root {
+      --glow-main: #385f92;
+      --glow-accent: #2740b0;
+    }
+
+    .glow {
+      color: #fff;
+      text-shadow: 0 0 6px var(--glow-main), 0 0 12px var(--glow-accent);
+      transition: text-shadow 0.3s ease;
+    }
+    .glow:hover {
+      text-shadow: 0 0 15px var(--glow-main), 0 0 25px var(--glow-accent);
+    }
+
+    h1.section-title {
+      font-size: 2rem;
+      margin: 40px 0 20px 0;
+      color: var(--glow-main);
+      text-shadow: 0 0 10px var(--glow-accent);
+    }
+
+    /* --- Dynamic Gallery --- */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      grid-auto-rows: 10px; /* base row height for dynamic span */
+      gap: 10px;
+      justify-items: center;
+      margin: 0 auto;
+      max-width: 1200px;
+      padding-bottom: 50px;
+    }
+    .gallery img {
+      width: 100%;
+      display: block;
+      object-fit: cover; 
+      border-radius: 15px;
+      border: 2px solid #222;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px var(--glow-main), 0 0 25px var(--glow-accent);
+    }
+
+    /* --- Lightbox --- */
+    .lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      overflow: hidden;
+    }
+    .lightbox.show { display: flex; }
+    .lightbox-content {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 15px;
+      transition: transform 0.4s ease, opacity 0.4s ease;
+    }
+    .lightbox-content.fade-in {
+      animation: fadeImage 0.4s ease;
+    }
+    @keyframes fadeImage {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 50px;
+      color: var(--glow-main);
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.3s ease;
+    }
+    .close:hover {
+      color: var(--glow-accent);
+      text-shadow: 0 0 15px var(--glow-main), 0 0 25px var(--glow-accent);
+    }
+
+    /* --- Arrows --- */
+    .arrow {
+      position: absolute;
+      top: 50%;
+      font-size: 50px;
+      color: var(--glow-main);
+      padding: 8px;
+      cursor: pointer;
+      user-select: none;
+      border: 2px solid var(--glow-main);
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      transform: translateY(-50%);
+      z-index: 1001;
+    }
+    .arrow.left { left: calc(50% - 45% - 15px); }
+    .arrow.right { right: calc(50% - 45% - 15px); }
+    .arrow:hover {
+      color: var(--glow-accent);
+      border-color: var(--glow-accent);
+      box-shadow: 0 0 15px var(--glow-main), 0 0 25px var(--glow-accent);
+    }
+
+    /* --- Back Button --- */
+    .back-button {
+      margin: 30px 0;
+      text-align: center;
+    }
+    .back-button a {
+      display: inline-block;
+      padding: 12px 30px;
+      font-size: 1rem;
+      font-weight: bold;
+      border: 2px solid var(--glow-main);
+      border-radius: 15px;
+      color: #fff;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-shadow: 0 0 6px var(--glow-main), 0 0 12px var(--glow-accent);
+    }
+    .back-button a:hover {
+      color: var(--glow-accent);
+      border-color: var(--glow-accent);
+      box-shadow: 0 0 15px var(--glow-main), 0 0 25px var(--glow-accent);
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <h1 class="section-title glow">Full Photo Gallery</h1>
+
+  <div class="gallery">
+    <img src="/images/img1.jpeg" alt="Photo 1" loading="lazy">
+    <img src="/images/img2.jpeg" alt="Photo 2" loading="lazy">
+    <img src="/images/img3.jpeg" alt="Photo 3" loading="lazy">
+    <img src="/images/img4.jpeg" alt="Photo 4" loading="lazy">
+    <img src="/images/img5.jpeg" alt="Photo 5" loading="lazy">
+    <img src="/images/img6.jpeg" alt="Photo 6" loading="lazy">
+    <img src="/images/img7.jpeg" alt="Photo 7" loading="lazy">
+    <img src="/images/img8.jpeg" alt="Photo 8" loading="lazy">
+    <img src="/images/img9.jpeg" alt="Photo 9" loading="lazy">
+    <img src="/images/img10.jpeg" alt="Photo 10" loading="lazy">
+                        <!--10-->
+    <img src="/images/img11.jpeg" alt="Photo 11" loading="lazy">
+    <img src="/images/img12.jpeg" alt="Photo 12" loading="lazy">
+
+
+  </div>
+
+  <div class="back-button">
+    <a href="index.html" class="glow-btn">Back to Portfolio</a>
+  </div>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox">
+    <span class="close">&times;</span>
+    <span class="arrow left">&#10094;</span>
+    <span class="arrow right">&#10095;</span>
+    <img class="lightbox-content" id="lightbox-img">
+  </div>
+
+  <script>
+    // Fade-in effect
+    window.addEventListener("load", () => {
+      document.body.classList.add("fade-in");
+    });
+
+    const gallery = document.querySelector('.gallery');
+    const images = gallery.querySelectorAll('img');
+
+    function setRowSpan(img) {
+      const rowHeight = parseInt(window.getComputedStyle(gallery).getPropertyValue('grid-auto-rows'));
+      const rowGap = parseInt(window.getComputedStyle(gallery).getPropertyValue('gap'));
+      const rowSpan = Math.ceil((img.naturalHeight / img.naturalWidth * img.offsetWidth + rowGap) / (rowHeight + rowGap));
+      img.style.gridRowEnd = `span ${rowSpan}`;
+    }
+
+    images.forEach(img => {
+      img.addEventListener('load', () => setRowSpan(img));
+      if (img.complete) setRowSpan(img); // for cached images
+    });
+
+    window.addEventListener('resize', () => {
+      images.forEach(img => setRowSpan(img));
+    });
+
+    // Lightbox
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+    const closeBtn = document.querySelector(".lightbox .close");
+    const leftArrow = document.querySelector(".lightbox .arrow.left");
+    const rightArrow = document.querySelector(".lightbox .arrow.right");
+
+    let currentIndex = 0;
+
+    function openLightbox(index) {
+      currentIndex = index;
+      lightboxImg.src = images[currentIndex].src;
+      lightbox.style.display = "flex";
+      setTimeout(() => lightbox.classList.add("show"), 10);
+    }
+
+    function showImage(index) {
+      lightboxImg.classList.remove("fade-in");
+      void lightboxImg.offsetWidth;
+      currentIndex = index;
+      lightboxImg.src = images[currentIndex].src;
+      lightboxImg.classList.add("fade-in");
+    }
+
+    images.forEach((img, index) => {
+      img.addEventListener("click", () => openLightbox(index));
+    });
+
+    closeBtn.addEventListener("click", () => {
+      lightbox.classList.remove("show");
+      setTimeout(() => { lightbox.style.display = "none"; }, 400);
+    });
+
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) {
+        lightbox.classList.remove("show");
+        setTimeout(() => { lightbox.style.display = "none"; }, 400);
+      }
+    });
+
+    leftArrow.addEventListener("click", (e) => {
+      e.stopPropagation();
+      showImage((currentIndex - 1 + images.length) % images.length);
+    });
+
+    rightArrow.addEventListener("click", (e) => {
+      e.stopPropagation();
+      showImage((currentIndex + 1) % images.length);
+    });
+  </script>
+
+</body>
+</html>
