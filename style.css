@@ -6,7 +6,9 @@ body {
   color: #f0f0f0;
   text-align: center;
 }
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+}
 
 /* Glow Colors */
 :root {
@@ -30,8 +32,13 @@ html { scroll-behavior: smooth; }
   align-items: center;
   flex-direction: column;
   padding-bottom: 20px;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1s ease;
 }
-.hero-content { animation: fadeIn 2s ease-in-out; }
+.hero-content {
+  animation: fadeIn 2s ease-in-out;
+}
 .hero-photo {
   width: 250px;
   height: 250px;
@@ -40,6 +47,7 @@ html { scroll-behavior: smooth; }
   box-shadow: 0 0 20px var(--glow-main);
   margin-bottom: 20px;
   transition: transform 0.4s ease, box-shadow 0.4s ease;
+  transform: scale(0);
 }
 .hero-photo:hover {
   transform: scale(1.05);
@@ -67,7 +75,12 @@ html { scroll-behavior: smooth; }
 }
 
 /* Sections */
-.section { padding: 60px 20px; }
+.section {
+  padding: 60px 20px;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1s ease;
+}
 .section-title {
   margin-bottom: 20px;
   font-size: 2rem;
@@ -91,8 +104,12 @@ html { scroll-behavior: smooth; }
   border: 2px solid #222;
   opacity: 0;
   transition: opacity 0.6s ease-in-out, transform 0.3s ease;
+  transform: scale(0.9);
 }
-.gallery img.loaded { opacity: 1; }
+.gallery img.loaded {
+  opacity: 1;
+  transform: scale(1);
+}
 .gallery img:hover {
   transform: scale(1.05);
   box-shadow: 0 0 15px var(--glow-main), 0 0 25px var(--glow-accent);
@@ -104,6 +121,9 @@ html { scroll-behavior: smooth; }
   justify-content: center;
   gap: 20px;
   flex-wrap: wrap;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1s ease;
 }
 .card {
   background: #1c1c1c;
@@ -129,12 +149,17 @@ html { scroll-behavior: smooth; }
   background: #0a0a0a;
   padding: 40px 20px;
   font-size: 0.9rem;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1s ease;
 }
 .footer a {
   color: var(--glow-main);
   text-decoration: none;
 }
-.footer a:hover { color: var(--glow-accent); }
+.footer a:hover {
+  color: var(--glow-accent);
+}
 
 /* Social Icons */
 .social-icons {
@@ -142,6 +167,9 @@ html { scroll-behavior: smooth; }
   justify-content: center;
   gap: 20px;
   margin-top: 20px;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1s ease;
 }
 .icon-box {
   width: 60px;
@@ -177,7 +205,10 @@ html { scroll-behavior: smooth; }
   opacity: 0;
   transition: opacity 0.4s ease;
 }
-.lightbox.show { display: block; opacity: 1; }
+.lightbox.show {
+  display: block;
+  opacity: 1;
+}
 .lightbox-content {
   margin: auto;
   display: block;
@@ -189,7 +220,9 @@ html { scroll-behavior: smooth; }
   transform: scale(0.9);
   transition: transform 0.3s ease;
 }
-.lightbox.show .lightbox-content { transform: scale(1); }
+.lightbox.show .lightbox-content {
+  transform: scale(1);
+}
 .lightbox .close {
   position: absolute;
   top: 15px;
@@ -200,13 +233,36 @@ html { scroll-behavior: smooth; }
   cursor: pointer;
   transition: 0.3s;
 }
-.lightbox .close:hover { color: var(--glow-accent); text-shadow: 0 0 15px var(--glow-main); }
-.arrow { position: absolute; top: 50%; font-size: 50px; color: var(--glow-main); padding: 8px; cursor: pointer; user-select: none; border: 2px solid var(--glow-main); border-radius: 10px; transition: all 0.3s ease; transform: translateY(-50%); z-index: 1001; }
+.lightbox .close:hover {
+  color: var(--glow-accent);
+  text-shadow: 0 0 15px var(--glow-main);
+}
+.arrow {
+  position: absolute;
+  top: 50%;
+  font-size: 50px;
+  color: var(--glow-main);
+  padding: 8px;
+  cursor: pointer;
+  user-select: none;
+  border: 2px solid var(--glow-main);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  transform: translateY(-50%);
+  z-index: 1001;
+}
 .arrow.left { left: 20px; }
 .arrow.right { right: 20px; }
-.arrow:hover { color: var(--glow-accent); border-color: var(--glow-accent); box-shadow: 0 0 15px var(--glow-main), 0 0 25px var(--glow-accent); }
+.arrow:hover {
+  color: var(--glow-accent);
+  border-color: var(--glow-accent);
+  box-shadow: 0 0 15px var(--glow-main), 0 0 25px var(--glow-accent);
+}
 .lightbox-content.fade-in { animation: fadeImage 0.4s ease; }
-@keyframes fadeImage { from { opacity:0; transform:scale(0.95);} to { opacity:1; transform:scale(1); } }
+@keyframes fadeImage {
+  from { opacity:0; transform:scale(0.95);}
+  to { opacity:1; transform:scale(1);}
+}
 
 /* Header */
 .site-header {
@@ -222,8 +278,16 @@ html { scroll-behavior: smooth; }
   z-index: 1100;
   backdrop-filter: blur(6px);
 }
-.site-header .logo { font-size: 1.4rem; font-weight: bold; color: var(--glow-main); }
+.site-header .logo {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: var(--glow-main);
+  transform: translateY(-50px);
+  opacity: 0;
+  transition: all 1s ease;
+}
 
+/* Navigation */
 .nav-links {
   display: flex;
   gap: 25px;
@@ -231,6 +295,9 @@ html { scroll-behavior: smooth; }
   flex-wrap: wrap;
   padding-right: 70px;
   border-radius: 10px;
+  transform: translateY(-50px);
+  opacity: 0;
+  transition: all 1s ease;
 }
 .nav-links a {
   color: #fff;
@@ -251,12 +318,17 @@ html { scroll-behavior: smooth; }
   transform-origin:right;
   transition: transform 0.3s ease;
 }
-.nav-links a:hover { color: var(--glow-main); }
-.nav-links a:hover::after { transform: scaleX(1); transform-origin:left; }
+.nav-links a:hover {
+  color: var(--glow-main);
+}
+.nav-links a:hover::after {
+  transform: scaleX(1);
+  transform-origin:left;
+}
 
 /* Hamburger Menu */
 .hamburger {
-  display: none; /* hidden on large screens */
+  display: none;
   flex-direction: column;
   cursor: pointer;
   gap: 5px;
@@ -280,17 +352,20 @@ html { scroll-behavior: smooth; }
   .nav-links {
     position: fixed;
     top: 60px;
-    right: -250px; /* hidden offscreen initially */
+    right: -250px;
     flex-direction: column;
     gap: 20px;
     background: rgba(10,10,10,0.6);
     width: 200px;
     padding: 20px;
-    transition: right 0.4s ease; /* smooth slide-in */
+    transition: right 0.4s ease;
     border-radius: 10px;
   }
-  .nav-links.show { right: 0; } /* slide-in */
+  .nav-links.show { right: 0; }
 }
 
 /* Animations */
-@keyframes fadeIn { from{opacity:0; transform:translateY(20px);} to{opacity:1; transform:translateY(0);} }
+@keyframes fadeIn {
+  from{opacity:0; transform:translateY(20px);}
+  to{opacity:1; transform:translateY(0);}
+}
