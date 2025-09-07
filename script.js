@@ -17,15 +17,51 @@ const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightbox-img');
 const galleryImages = document.querySelectorAll('.gallery img');
 const closeBtn = document.querySelector('.lightbox .close');
+const arrowLeft = document.querySelector('.arrow.left');
+const arrowRight = document.querySelector('.arrow.right');
 
-galleryImages.forEach(img => {
+let currentIndex = 0;
+
+// Open lightbox
+galleryImages.forEach((img, index) => {
   img.addEventListener('click', () => {
+    currentIndex = index;
     lightboxImg.src = img.src;
+    lightboxImg.classList.remove('fade-in');
+    void lightboxImg.offsetWidth; // trigger reflow for animation
+    lightboxImg.classList.add('fade-in');
     lightbox.classList.add('show');
   });
 });
 
+// Close lightbox
 closeBtn.addEventListener('click', () => lightbox.classList.remove('show'));
+
+// Close when clicking outside image
+lightbox.addEventListener('click', e => {
+  if (e.target === lightbox) {
+    lightbox.classList.remove('show');
+  }
+});
+
+// Switch images
+function showImage(index) {
+  currentIndex = (index + galleryImages.length) % galleryImages.length;
+  lightboxImg.classList.remove('fade-in');
+  void lightboxImg.offsetWidth; // trigger reflow for animation
+  lightboxImg.src = galleryImages[currentIndex].src;
+  lightboxImg.classList.add('fade-in');
+}
+
+arrowLeft.addEventListener('click', e => {
+  e.stopPropagation();
+  showImage(currentIndex - 1);
+});
+
+arrowRight.addEventListener('click', e => {
+  e.stopPropagation();
+  showImage(currentIndex + 1);
+});
 
 // Page load animations
 window.addEventListener('load', () => {
